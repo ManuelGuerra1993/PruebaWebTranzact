@@ -8,15 +8,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import support.util;
 
 public class MyAccountPage extends util {
+    //Definicion de locators
     @FindBy(xpath = "//h1[contains(text(),'My account')]")
     private WebElement lblTitulo;
     @FindBy(xpath = "//a[@class='logout']") private WebElement btnSignOut;
 
 
     public MyAccountPage(){
+        //Inicialización de Page Factory para los locators
         PageFactory.initElements(driver, this);
     }
 
+    //Metodo para validar el titulo
     public boolean validarTitulo(String titulo) {
         wait.until(ExpectedConditions.visibilityOf(lblTitulo));
         if (titulo.equals(lblTitulo.getText())) {
@@ -26,6 +29,7 @@ public class MyAccountPage extends util {
         }
     }
 
+    //Metodo para validar la url actual
     public boolean validarURL(String url){
         String uri = driver.getCurrentUrl();
         System.out.println(uri);
@@ -36,6 +40,7 @@ public class MyAccountPage extends util {
         }
     }
 
+    //Metodo para validar el nombre del usuario logueado
     public boolean validarNombreUsuario(String usuario){
         WebElement usu = driver.findElement(By.xpath("//span[contains(text(),'"+usuario+"')]"));
         if (usuario.equals(usu.getText())){
@@ -45,6 +50,7 @@ public class MyAccountPage extends util {
         }
     }
 
+    //Metodo para validar que el botón Sign Out este habilitado
     public boolean validarBotonSignOutHabilitado(){
         if (btnSignOut.isEnabled()){
             return true;

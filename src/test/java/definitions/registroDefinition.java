@@ -11,12 +11,14 @@ import pageObjects.HomePage;
 import pageObjects.MyAccountPage;
 
 public class registroDefinition {
+    //Llamado de los pageobjects
     HomePage home;
     AuthenticationPage authentication;
     CreateAnAccountPage createAnAccount;
     MyAccountPage myAccount;
 
     public registroDefinition(){
+        //constructores
         home = new HomePage();
         authentication = new AuthenticationPage();
         createAnAccount = new CreateAnAccountPage();
@@ -24,6 +26,7 @@ public class registroDefinition {
     }
 
 
+    //Aqui se enlaza los pasos del gherkin
     @Given("valido que la aplicacion {string} este operativa")
     public void validoQueLaAplicacionEsteOperativa(String url) {
         hooks.driver.get(url);

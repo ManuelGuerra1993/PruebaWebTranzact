@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import support.util;
 
 public class CreateAnAccountPage extends util {
+    //Lista de locators
     @FindBy(xpath = "//h1[contains(text(),'Create an account')]")
     private WebElement lblTitulo;
     @FindBy(id = "uniform-id_gender1")
@@ -65,11 +66,15 @@ public class CreateAnAccountPage extends util {
         PageFactory.initElements(driver, this);
     }
 
+    //Metodo booleano que compara el titulo
     public boolean validarTitulo(String titulo) {
+        //Espera explicita
         wait.until(ExpectedConditions.visibilityOf(lblTitulo));
+        //Condición si el titulo es igual se retorna true
         if (titulo.equals(lblTitulo.getText())) {
             return true;
         } else {
+            //Si el titulo no es igual, se retorna falso
             return false;
         }
     }
